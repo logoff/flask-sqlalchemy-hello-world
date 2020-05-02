@@ -20,26 +20,30 @@ def hello():
 
 @app.route("/shops", methods=["GET"])
 def get_all_shops():
+    # get al, Shop instances of database
     shops = Shop.query.all()
 
+    # serialize Shop list to dict
     shop_schema = ShopSchema()
-    json_shops = shop_schema.dump(shops, many=True)
+    dict_shops = shop_schema.dump(shops, many=True)
 
-    return jsonify(json_shops)
+    # serialize to JSON and return
+    return jsonify(dict_shops)
 
 
 @app.route("/shops", methods=["POST"])
 def add_shop():
+    # return 400 if not JSON in request body
     if not request.is_json:
         abort(400)
 
+    # deserialize JSON to Shop object
     shop_schema = ShopSchema()
+    name = request.get_json()["name"]
     shop = shop_schema.load(request.get_json(), session=db_session)
 
-    db_session.add(shop)
-    db_session.commit()
-
-    return '',200
+    # return 200 OK (with no body)
+    return "", 200
 
 
 @app.teardown_appcontext
