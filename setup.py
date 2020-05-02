@@ -10,13 +10,15 @@ setup(
     # dependencies
     install_requires=[
         "Flask==1.1.2",
-        "SQLAlchemy==1.3.16",
-        "gunicorn==20.0.4"
+        "gunicorn==20.0.4",
+        "marshmallow-sqlalchemy==0.22.3",
+        "psycopg2==2.8.5"
     ],
 
     # metadata to display on PyPI
     author="logoff",
-    description="Hello World REST API deployed with Python Flask and SQLAlchemy as ORM over SQLite database",
+    description="Hello World REST API deployed with Python Flask and \
+                SQLAlchemy as ORM over PostgreSQL database",
     keywords="flask sqlalchemy sqlite",
     url="https://github.com/logoff/flask-sqlalchemy-hello-world",
     project_urls={
