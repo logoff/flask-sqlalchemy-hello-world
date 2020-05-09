@@ -42,6 +42,10 @@ def add_shop():
     name = request.get_json()["name"]
     shop = shop_schema.load(request.get_json(), session=db_session)
 
+    # write to database
+    db_session.add(shop)
+    db_session.commit()
+
     # return 200 OK (with no body)
     return "", 200
 
