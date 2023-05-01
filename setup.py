@@ -9,7 +9,7 @@ setup(
 
     # dependencies
     install_requires=[
-        "Flask==1.1.2",
+        "Flask==2.3.2",
         "gunicorn==20.0.4",
         "marshmallow-sqlalchemy==0.22.3",
         "psycopg2==2.8.5"
